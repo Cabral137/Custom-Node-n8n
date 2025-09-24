@@ -17,40 +17,40 @@ O projeto inclui o código-fonte do nó e toda a configuração de ambiente nece
 ## Pré-requisitos
 Antes de começar, garanta que você tenha as seguintes ferramentas instaladas em seu sistema:
 
-- Node.js (versão 22): É recomendado usar um gerenciador de versões como o nvm.
+- **Node.js (versão 22):** É recomendado usar um gerenciador de versões como o nvm.
 
-- Docker e Docker Compose: Essencial para criar e gerenciar o ambiente de execução do n8n.
+- **Docker e Docker Compose:** Essencial para criar e gerenciar o ambiente de execução do n8n.
 
 ## Instalação e Configuração das Ferramentas
 
 
- 1. Clone este repositório
+**1. Clone este repositório**
 ```
-git clone [https://github.com/Cabral137/Custom-Node-n8n.git](https://github.com/Cabral137/Custom-Node-n8n.git)
+git clone https://github.com/Cabral137/Custom-Node-n8n.git
 cd Custom-Node-n8n
 ```
- 2. Configure a versão correta do Node.js
+**2. Configure a versão correta do Node.js**
 ```
-# O arquivo .nvmrc já está no projeto. Se você usa nvm, apenas execute:
+// O arquivo .nvmrc já está no projeto.
 nvm use
 ```
- 3. Instale as dependências do projeto
+**3. Instale as dependências do projeto**
 ```
 npm install
 ```
- 4. Configure as variáveis de ambiente
+**4. Configure as variáveis de ambiente**
 ```
-# Copie o arquivo de exemplo para criar seu arquivo de ambiente local.
+// Copie o arquivo de exemplo para criar seu arquivo de ambiente local.
 cp .env.example .env
 ```
- 5. Compile o código do nó customizado
+**5. Compile o código do nó customizado**
 ```
-# Este comando transforma o código TypeScript em JavaScript na pasta `dist/`.
+// Este comando transforma o código TypeScript em JavaScript na pasta `dist/`.
 npm run build
 ```
- 6. Inicie o ambiente n8n com Docker
+**6. Inicie o ambiente n8n com Docker**
 ```
-# Este comando irá baixar as imagens e iniciar os contêineres do n8n e do banco de dados.
+// Este comando irá baixar as imagens e iniciar os contêineres do n8n e do banco de dados.
 docker compose up -d
 ```
 
@@ -73,18 +73,24 @@ Após a execução desses comandos, o ambiente n8n estará rodando e acessível 
 ---
 
 ## Estrutura do projeto
+```
+|
+├── nodes/
+│   └── Random/
+│       ├── Random.node.ts  // O código-fonte principal do nó em TypeScript.
+│       └── random.svg      // O ícone do nó que aparece na interface do n8n.
+├── .env.example            // Molde para o arquivo .env, seguro para ir ao Git.
+├── .gitignore              // Define quais arquivos e pastas o Git deve ignorar.
+├── .nvmrc                  // Especifica a versão do Node.js para o projeto.
+├── docker-compose.yaml     // Configura os serviços Docker (n8n + Postgres).
+├── gulpfile.js             // Automatiza tarefas de build.
+├── package.json            // Gerencia as dependências e scripts do projeto (npm install, npm run build).
+├── package-lock.json       // Trava as versões exatas das dependências.
+├── tsconfig.json           // Define as regras para o compilador TypeScript.
+│
+├── dist/                   // (Gerado ao executar) Contém o código JavaScript compilado.
+└── node_modules/           // (Gerado ao executar) Armazena os pacotes das dependências.
 
-  - docker-compose.yaml: Define os serviços do n8n e do banco de dados PostgreSQL.
-
-  - env.example: Arquivo de exemplo para as variáveis de ambiente. O .env local é gerado a partir dele.
-
-  - .gitignore: Lista os arquivos e pastas que não devem ser enviados para o repositório Git.
-
-  - nodes/Random/: Contém o código-fonte (Random.node.ts) e o ícone (random.svg) do nó.
-
-  - package.json: Lista as dependências e scripts (build, dev) do projeto.
-
-  - dist/: Pasta gerada automaticamente com o código JavaScript compilado (não está no Git).
-
+```
 ---
 
