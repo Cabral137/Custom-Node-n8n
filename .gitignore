@@ -1,0 +1,10 @@
+# Pastas de dependências e de build
+node_modules/
+dist/
+
+# Arquivo de ambiente com senhas
+.env
+
+# Logs e arquivos de sistema
+npm-debug.log*
+.DS_Store
